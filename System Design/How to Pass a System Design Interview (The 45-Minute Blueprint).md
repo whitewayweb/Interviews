@@ -28,6 +28,8 @@ The biggest mistake mid-level engineers make is sitting back and waiting to be a
 | 4 - Deep Dives & Bottlenecks | 20–35 min | Stress test and solve the hard scaling problems |
 | 5 - Resilience & Observability | 35–45 min | Make the system reliable and monitorable |
 
+![The 45-Minute Matrix](assets/matrix_recap.jpg)
+
 ---
 
 ## Phase 1: Scope & Requirements (0–5 min)
@@ -43,6 +45,8 @@ Limit yourself to **three core features maximum**. For Uber:
 That's it. Do not try to design surge pricing, ratings, or ride-sharing pools in the first five minutes.
 
 ### Non-Functional Requirements
+![Phase 1: Non-Functional Requirements Up Front](assets/phase_1_requirements.jpg)
+
 This is where you establish SLAs (Service Level Agreements). Say this out loud to the interviewer:
 
 > *"Before we look at components, I want to clarify our scale and SLAs. Do we need strong consistency for payments but eventual consistency for driver locations? What is the latency budget for location tracking - is under 500ms acceptable?"*
@@ -63,6 +67,8 @@ Many engineers dread this phase because they think they are being tested on prec
 Your interviewer **does not care** if your multiplication is off by a few decimal points. They care about **order of magnitude** and what it implies for your hardware choices.
 
 ### Back-of-the-Envelope Estimation
+![Phase 2: Math as Architectural Justification](assets/phase_2_estimations.jpg)
+
 Round aggressively:
 
 - 10 million daily users doing 10 actions a day = 100 million events/day
@@ -98,6 +104,8 @@ Client → Load Balancer → API Gateway → Application Service → Storage
 ```
 
 ### Trace the Happy Path
+![Phase 3: Trace the Happy Path First](assets/phase_3_architecture.jpg)
+
 Walk your interviewer through a single end-to-end request:
 
 > *"The mobile client sends a ride request to our load balancer, which terminates TLS and forwards it to the API gateway for authentication and rate limiting. The gateway routes it to the ride service, which writes to the database and returns a ride ID."*
@@ -130,6 +138,8 @@ Don't just say "add a cache." Specify the pattern:
 Manage memory with TTL and LRU (Least Recently Used) eviction policies.
 
 ### Database Scaling
+![Phase 4: Database Scaling & Sharding Keys](assets/phase_4_deep_dives.jpg)
+
 - **Read pressure?** Add read replicas with asynchronous replication.
 - **Write pressure?** Introduce sharding (horizontal partitioning).
 
@@ -160,6 +170,8 @@ Proactively scan your diagram for risks before the interviewer does:
 Most candidates think the interview ends when the architecture works on paper. Senior candidates know that **unmonitored systems are broken systems waiting to happen.**
 
 Spend two minutes covering:
+
+![Phase 5: Resilience & Observability](assets/phase_5_observability.jpg)
 
 - **Distributed Tracing:** Inject a unique `trace_id` at the API gateway to track a single request across all microservices end-to-end.
 - **Circuit Breakers:** If a downstream payment service slows down, a circuit breaker trips to prevent cascading failures across the entire system.
