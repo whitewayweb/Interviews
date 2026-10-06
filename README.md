@@ -10,6 +10,7 @@ A curated repository of engineering interview frameworks, notes, and breakdowns 
 | Guide | Source | Summary |
 |---|---|---|
 | [How to Pass a System Design Interview (The 45-Minute Blueprint)](<System Design/How to Pass a System Design Interview (The 45-Minute Blueprint).md>) | [Code with Lucian](https://www.youtube.com/watch?v=HcC9Du6RWwk) | A repeatable 5-phase framework for structuring any system design interview end-to-end. |
+| [Design an AI Assessment Evaluation Platform (90-Minute Blueprint)](<System Design/Design an AI Assessment Evaluation Platform.md>) | Senior Backend Interview Prep | End-to-end 90-minute architecture: FastAPI, PostgreSQL, SQLAlchemy, SQS fair queuing, LLM rate limits, and webhooks. |
 
 ### 💻 Coding & Algorithms
 > *(Coming soon)*
